@@ -1,2 +1,2 @@
-# redstone-cli
+# redstone-cli - COMING SOON...
 Redstone Launcher but the iper fast edition! Its written in rust (this is the best p. language for minecraft launchers) and it has no grafical user interface only in cmd (its in the name (CLI))
