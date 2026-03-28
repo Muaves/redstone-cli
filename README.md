@@ -17,6 +17,6 @@ A high-performance, Rust-based Minecraft Launcher. Redstone CLI eliminates the n
 ### For Developers (From Source)
 To build the project manually, ensure the Rust toolchain is installed:
 ```bash
-git clone [https://github.com/USERNAME/redstone-cli.git](https://github.com/USERNAME/redstone-cli.git)
+git clone [https://github.com/Muaves/redstone-cli.git](https://github.com/Muaves/redstone-cli.git)
 cd "Redstone CLI"
 cargo run
