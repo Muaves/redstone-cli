@@ -1,2 +1,22 @@
-# redstone-cli - COMING SOON...
-Redstone Launcher but the iper fast edition! Its written in rust (this is the best p. language for minecraft launchers) and it has no grafical user interface only in cmd (its in the name (CLI))
+# Redstone CLI
+A high-performance, Rust-based Minecraft Launcher. Redstone CLI eliminates the need for heavy, memory-intensive graphical launchers by managing version manifests, downloads, and authentication directly through the terminal.
+
+## Features
+* Interactive Menu: Simplified navigation using a numeric interface (Options 1-6).
+* Microsoft Auth: Secure implementation of the OAuth2 Device Code flow.
+* Smart Downloader: Concurrent fetching of both version metadata (JSON) and client game files (JAR).
+* Clean & Portable: Self-contained architecture that stores data locally without system-wide clutter.
+
+## Installation and Execution
+
+### For Users (Binary)
+1. Navigate to the [Releases](https://github.com/Muaves/redstone-cli/releases) page.
+2. Download the binary compatible with your operating system.
+3. Execute the file: `./redstone-cli`
+
+### For Developers (From Source)
+To build the project manually, ensure the Rust toolchain is installed:
+```bash
+git clone [https://github.com/USERNAME/redstone-cli.git](https://github.com/USERNAME/redstone-cli.git)
+cd "Redstone CLI"
+cargo run
