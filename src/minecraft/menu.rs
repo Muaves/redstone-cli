@@ -20,7 +20,6 @@ pub async fn start() {
         
         match choice.trim() {
             "1" => {
-                println!("Fetching...");
                 if let Ok(m) = versions::fetch_versions().await {
                     println!("Latest Release: {}", m.latest.release);
                     for v in m.versions.iter().take(5) {
@@ -33,17 +32,19 @@ pub async fn start() {
                 io::stdout().flush().unwrap();
                 let mut v = String::new();
                 io::stdin().read_line(&mut v).unwrap();
-                commands::download(v.trim()).await; // Added .await
+                commands::download(v.trim()).await;
             },
             "3" => {
                 print!("Version to launch: ");
                 io::stdout().flush().unwrap();
                 let mut v = String::new();
                 io::stdin().read_line(&mut v).unwrap();
-                let _ = launcher::launch(v.trim());
+                if let Err(e) = launcher::launch(v.trim()) {
+                    println!("\x1b[91m[Launch Error]\x1b[0m {}", e);
+                }
             },
             "4" => commands::open_web(),
-            "5" => commands::auth().await, // Added .await
+            "5" => commands::auth().await,
             "6" => break,
             _ => println!("Invalid choice!"),
         }
