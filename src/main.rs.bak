@@ -1,0 +1,47 @@
+mod cli;
+mod minecraft;
+
+use cli::commands;
+use minecraft::launcher;
+
+use std::env;
+
+#[tokio::main]
+async fn main() {
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() == 1 {
+        commands::help();
+        return;
+    }
+
+    match args[1].as_str() {
+        "-r" => {
+            if args.len() < 3 {
+                println!("Usage: mrcli -r <version>");
+                return;
+            }
+            let version = &args[2];
+            if let Err(e) = launcher::launch(version) {
+                println!("Error launching {}: {}", version, e);
+            }
+        }
+        "-d" => {
+            if args.len() < 3 {
+                println!("Usage: mrcli -d <version>");
+                return;
+            }
+            let version = &args[2];
+            commands::download(version);
+        }
+        "-ls" => commands::list_versions(),
+        "-web" => commands::open_web(),
+        "-auth" => commands::auth(),
+        "-v" => commands::version(),
+        "-qF" => std::process::exit(0),
+        _ => {
+            println!("Unknown command: {}", args[1]);
+            commands::help();
+        }
+    }
+}
